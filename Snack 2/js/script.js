@@ -5,7 +5,7 @@
 // Infine usando la destrutturazione creiamo un nuovo array i cui elementi contengono solo nomi e falli subiti e stampiamo tutto in console.
 
 // Variabile delle squadre della Seria A
-SeriaATeam = [
+seriaATeam = [
     {
         nome: 'Juventus',
         punti: 0,
@@ -47,18 +47,24 @@ SeriaATeam = [
 const seriaATeamPoints = [];
 
 // Creo una variabile Che contiene solo il nome e i falli subiti
-let { nome, falliSubiti } = SeriaATeam;
+for (let i = 0; i < seriaATeam.length; i++) {
+    let thisItems = seriaATeam[i];
+    const randomPunti = getRndInteger(1, 20);
+    const randomFalliSubiti = getRndInteger(1, 20);
+    thisItems.punti = randomPunti;
+    thisItems.falliSubiti = randomFalliSubiti;
+}
+
 
 // Creo ciclo for per leggere tutti i nomi e creare numeri
 // random di falli subiti e metterli su ogni scquadra
-for (let i = 0; i < SeriaATeam.length; i++) {
+for (let i = 0; i < seriaATeam.length; i++) {
     // Leggo tutte le object
-    thisTeam = SeriaATeam[i];
-
+    thisTeam = seriaATeam[i];
+    let { nome, punti, falliSubiti } = thisTeam;
     // Funzione che crea numeri random
-    falliSubiti = getRndInteger(1, 20);
+    
     // Faccio leggere solo i nome dei Team
-    nome = thisTeam.nome;
 
     // Destruction
     const seriaATeamClone = {
@@ -70,6 +76,7 @@ for (let i = 0; i < SeriaATeam.length; i++) {
     seriaATeamPoints.push(seriaATeamClone);
 }
 
+console.log(seriaATeam);
 console.log(seriaATeamPoints);
 // FUNCTIONS
 function getRndInteger(min, max) {
